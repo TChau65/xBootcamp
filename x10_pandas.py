@@ -1,6 +1,8 @@
 import pandas as pd
 # import zipfile
 import requests
+from icecream import ic
+
 #########################################################
 data_path = 'data'
 #########################################################
@@ -194,6 +196,19 @@ def medart_20_codes():
     labels = ['<30', '30-40', '40-50', '50+']
     df['AgeGroup'] = pd.cut(df['Age'], bins=bins, labels=labels)
 
+def tchau_fun1(symbol):
+    ic.disable()
+    df= pd.read_csv(f'data/hist/{symbol}.csv')
+    ic(df)
+
+    # Display basic information about the DataFrame
+    ic(df.info())
+
+    # Descriptive statistics of numeric columns
+    ic(df.describe())
+    ic.enable()
+    
+    return df
 
 def medart_iterator():
     import pandas as pd
@@ -262,9 +277,18 @@ def medart_iterator():
 
 
 def main():
+    symbols = ['AAPL','NVDA']
+    symbols_path = 'data/tickers/symbols_all.csv'
+    symbols = pd.read_csv(symbols_path)['Symbol'].tolist()
+    ic(symbols)
+    #symbol = input("Enter symbol ...")
     
-    employee_df = f01_create_df_from_dict()
-    print(employee_df)
+    for symbol in symbols:
+        ic(symbol)
+        hist_df = tchau_fun1(symbol)
+        ic(hist_df) 
+    #employee_df = f01_create_df_from_dict()
+    #print(employee_df)
     #planets_df = f02_create_df_from_list()
   
     #err elements_df  = f03_create_df_from_csv()
