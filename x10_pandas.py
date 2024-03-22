@@ -105,7 +105,7 @@ def f05_create_df_from_read_html():
 
     # Grouping and aggregating data
     # grouped_df = df.groupby('Department').agg({'Salary': 'mean', 'Age': 'max'})
-    grouped_df = df.groupby('GICS Sector').agg({'GICS Sector': 'count'}))
+    grouped_df = df.groupby('GICS Sector').agg({'GICS Sector': 'count'})
     print(grouped_df)
 
     return df
@@ -262,7 +262,7 @@ def medart_iterator():
 def main():
     
     employee_df = f01_create_df_from_dict()
-    #print(employee_df)
+    print(employee_df)
     #planets_df = f02_create_df_from_list()
   
     #err elements_df  = f03_create_df_from_csv()
